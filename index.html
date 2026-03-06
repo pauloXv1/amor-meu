@@ -10,7 +10,6 @@
 <body>
 
   <div id="cursor"></div>
-
   <div id="petals"></div>
 
   <section id="hero">
@@ -29,9 +28,7 @@
 
   <section id="gallery">
     <p class="section-label">Momentos que guardo no coração</p>
-    <div class="photo-grid" id="photoGrid">
-      <!-- Cards gerados pelo script.js -->
-    </div>
+    <div class="photo-grid" id="photoGrid"></div>
   </section>
 
   <section id="carta">
@@ -60,12 +57,9 @@
     </div>
   </div>
 
-  <iframe id="ytAudio"
-    src="https://www.youtube.com/embed/Y59pC4FcBxM?autoplay=0&loop=1&playlist=Y59pC4FcBxM"
-    allow="autoplay"
-    style="display:none">
-  </iframe>
+  <div id="yt-player" style="display:none"></div>
 
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="script.js"></script>
 </body>
 </html>
