@@ -1,65 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para Você — 8 de Março 💐</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Jogo da Memória</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="jogo.css"/>
 </head>
 <body>
 
-  <div id="cursor"></div>
   <div id="petals"></div>
 
-  <section id="hero">
-    <div class="petal-bg"></div>
-    <p class="hero-date">8 de Março · Dia Internacional da Mulher</p>
-    <h1 class="hero-title">Para <em>você,</em><br>que ilumina<br>tudo.</h1>
-    <p class="hero-sub">
-      Cada foto aqui guarda um momento, um sorriso,<br>
-      um pedaço de tudo que você é para mim.
+  <div id="intro">
+    <h1 class="intro-title">Memórias do jardim <em>jogar</em></h1>
+    <p class="intro-sub">
+      Encontre todos os pares e ganhe acesso os próximos níveis. 💌
     </p>
-    <div class="scroll-hint">
-      ver momentos
-      <span></span>
-    </div>
-  </section>
-
-  <section id="gallery">
-    <p class="section-label">Momentos que guardo no coração</p>
-    <div class="photo-grid" id="photoGrid"></div>
-  </section>
-
-  <section id="carta">
-    <p class="carta-label">Uma carta para você</p>
-    <p class="carta-text">
-      "Você não é apenas a mulher que eu amo —<br>
-      você é o lugar onde eu me sinto em casa.<br>
-      Feliz Dia da Mulher, meu amor."
-    </p>
-    <p class="carta-assinatura">
-      Com todo o meu amor <span class="heart-deco">♥</span>
-    </p>
-  </section>
-
-  <div id="music-bar">
-    <button class="music-btn" id="playBtn" title="Play/Pause">
-      <svg id="playIcon"  viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>
-    </button>
-    <div class="music-info">
-      <span class="music-title"  id="musicTitle">Carregando...</span>
-      <span class="music-artist" id="musicArtist"></span>
-    </div>
-    <div class="bars" id="bars">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
+    <button class="btn-start" onclick="startGame()">Aceitar o desafio</button>
   </div>
 
-  <div id="yt-player" style="display:none"></div>
+  <div id="game-screen">
+    <div class="game-header">
+      <h2 class="game-title">Encontre todos os <em>pares</em></h2>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-val" id="moves">0</span>
+          <span class="stat-label">Tentativas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val" id="pairs">0/8</span>
+          <span class="stat-label">Pares</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val" id="timer">0s</span>
+          <span class="stat-label">Tempo</span>
+        </div>
+      </div>
+    </div>
+    <div id="grid"></div>
+  </div>
 
-  <script src="script.js"></script>
-  <script src="https://www.youtube.com/iframe_api"></script>
+  <div id="win-overlay">
+    <div class="win-emoji">🌹</div>
+    <h2 class="win-title">Você ganhou,<br><em>meu amor!</em></h2>
+    <p class="win-sub">Agora sua surpresa está desbloqueada. Clique abaixo para ver tudo que preparei pra você.</p>
+    <div class="win-stats">
+      <div class="stat">
+        <span class="stat-val" id="final-moves">0</span>
+        <span class="stat-label">Tentativas</span>
+      </div>
+      <div class="stat">
+        <span class="stat-val" id="final-time">0s</span>
+        <span class="stat-label">Tempo</span>
+      </div>
+    </div>
+    <a class="btn-next" href="index.html">Ver minha surpresa 💐</a>
+    <button class="btn-replay" onclick="replayGame()">Jogar novamente</button>
+  </div>
+
+  <script src="jogo.js"></script>
 </body>
 </html>
