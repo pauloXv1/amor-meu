@@ -1,8 +1,9 @@
-const musicName   = "Nome da Música";
-const musicArtist = "Nome do Artista";
+const musicName   = "Que essa música te lembre esse momento ";
+const musicArtist = "Paulo";
+
 const photos = [
   {
-    src: "fotos-dela/foto01.jpg",
+    src: "fotos-dela/foto17.jpg",
     phrase: "O seu sorriso é o meu lugar favorito",
     caption: "O sorriso que me conquistou"
   },
@@ -18,7 +19,7 @@ const photos = [
   },
   {
     src: "fotos-dela/foto05.jpg",
-    phrase: "Olhar para você é sempre a melhor parte do meu dia.",
+    phrase: "No meio da noite, ela ainda consegue ser a coisa mais brilhante daqui..",
     caption: "A parte favorita do meu dia"
   },
   {
@@ -28,52 +29,42 @@ const photos = [
   },
   {
     src: "fotos-dela/foto07.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Mesmo estando do lado errado da via, você ainda é o ser mais lindo e incrível que já vi.",
     caption: "Silêncios que eu guardo para sempre"
   },
-    {
+  {
     src: "fotos-dela/foto08.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Entre o mar e o sol… ela continua sendo a vista mais bonita.",
     caption: "Silêncios que eu guardo para sempre"
   },
-    {
+  {
     src: "fotos-dela/foto09.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Que Deus abençoe e nazinha interceda sempre esse sorriso que alegra meus dias",
     caption: "Silêncios que eu guardo para sempre"
   },
-    {
+  {
     src: "fotos-dela/foto10.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Momentos simples, risadas sinceras e memórias que ficam.",
     caption: "Silêncios que eu guardo para sempre"
   },
-    {
+  {
     src: "fotos-dela/foto11.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Entre a fé, a gratidão e o felicidade dela, eu só consegui sentir uma coisa: muito orgulho da mulher que você é.",
     caption: "Silêncios que eu guardo para sempre"
   },
-    {
+  {
     src: "fotos-dela/foto12.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Enquanto ela admirava a história diante dos seus olhos, eu admirava a história que estou vivendo ao lado dela.",
     caption: "Silêncios que eu guardo para sempre"
   },
-    {
-    src: "fotos-dela/foto13.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
-    caption: "Silêncios que eu guardo para sempre"
-  },
-    {
-    src: "fotos-dela/foto14.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
-    caption: "Silêncios que eu guardo para sempre"
-  },
-    {
+  {
     src: "fotos-dela/foto15.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Em meio a folia, o melhor de tudo foi ter você ao meu lado.",
     caption: "Silêncios que eu guardo para sempre"
   },
-      {
+  {
     src: "fotos-dela/foto16.jpg",
-    phrase: "Ao seu lado, até o silêncio é a minha música favorita.",
+    phrase: "Entre passeios, risadas, fé, conquistas e momentos simples, fomos colecionando memórias que eu quero guardar para sempre. Cada foto desse dia carrega um pedaço da nossa história, e em todas elas existe algo que nunca muda: a felicidade de ter você ao meu lado.",
     caption: "Silêncios que eu guardo para sempre"
   },
 ];
@@ -106,7 +97,7 @@ function initScrollReveal() {
 }
 
 function initMusicPlayer() {
-  const audio     = document.getElementById('bgAudio');
+  const frame     = document.getElementById('ytAudio');
   const playBtn   = document.getElementById('playBtn');
   const playIcon  = document.getElementById('playIcon');
   const pauseIcon = document.getElementById('pauseIcon');
@@ -119,12 +110,12 @@ function initMusicPlayer() {
 
   playBtn.addEventListener('click', () => {
     if (playing) {
-      audio.pause();
+      frame.src = frame.src.replace('autoplay=1', 'autoplay=0');
       playIcon.style.display  = 'block';
       pauseIcon.style.display = 'none';
       bars.classList.add('paused');
     } else {
-      audio.play().catch(() => {});
+      frame.src = frame.src.replace('autoplay=0', 'autoplay=1');
       playIcon.style.display  = 'none';
       pauseIcon.style.display = 'block';
       bars.classList.remove('paused');
