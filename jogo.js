@@ -1,12 +1,12 @@
 const CARD_ITEMS = [
-  { type: 'emoji', val: '🌹' },
-  { type: 'emoji', val: '💌' },
-  { type: 'emoji', val: '✨' },
-  { type: 'emoji', val: '🌸' },
-  { type: 'emoji', val: '💖' },
-  { type: 'emoji', val: '🦋' },
-  { type: 'emoji', val: '🌙' },
-  { type: 'emoji', val: '💐' },
+  { type: 'img', val: 'fotos-dela/foto001.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto002.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto003.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto004.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto005.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto006.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto007.jpeg' },
+  { type: 'img', val: 'fotos-dela/foto008.jpeg' },
 ];
 
 let cards = [], flipped = [], matched = 0, moves = 0, seconds = 0, timerInterval;
