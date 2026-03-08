@@ -1,14 +1,39 @@
+const musicName   = "Evidências";
+const musicArtist = "Chitãozinho & Xororó";
+const youtubeId   = "uzHJFYsf1-Y";
+
+
+let ytPlayer;
+let playing = false;
 let naoCliques = 0;
+
 const mensagensNao = [
   "Tem certeza? 🥺",
   "Pensa bem… 💭",
   "Última chance… 🌹",
 ];
 
+window.onYouTubeIframeAPIReady = function () {
+  ytPlayer = new YT.Player('yt-player', {
+    height: '0',
+    width: '0',
+    videoId: youtubeId,
+    playerVars: { autoplay: 0, loop: 1, playlist: youtubeId },
+    events: {
+      onReady: function () {
+        if (sessionStorage.getItem('musicPlaying') === 'true') {
+          ytPlayer.playVideo();
+          playing = true;
+        }
+      }
+    }
+  });
+};
+
 function aceitou() {
   document.getElementById('sim-overlay').classList.add('active');
   spawnCoracoes();
-  spawnPetals();
+  spawnPetalsOverlay();
 }
 
 function recusou() {
@@ -31,17 +56,15 @@ function moveNaoBtn() {
   const btn = document.getElementById('btnNao');
   const maxX = window.innerWidth  - 160;
   const maxY = window.innerHeight - 80;
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-  btn.style.position  = 'fixed';
-  btn.style.left      = x + 'px';
-  btn.style.top       = y + 'px';
-  btn.style.zIndex    = '999';
+  btn.style.position   = 'fixed';
+  btn.style.left       = Math.random() * maxX + 'px';
+  btn.style.top        = Math.random() * maxY + 'px';
+  btn.style.zIndex     = '999';
   btn.style.transition = 'left .2s, top .2s';
 }
 
 function spawnCoracoes() {
-  const container = document.getElementById('corações');
+  const container = document.getElementById('coracoes');
   const emojis = ['💖', '💕', '🌹', '✨', '💗', '💝', '🌸'];
   for (let i = 0; i < 30; i++) {
     const h = document.createElement('div');
@@ -59,7 +82,7 @@ function spawnCoracoes() {
   }
 }
 
-function spawnPetals() {
+function spawnPetalsOverlay() {
   const container = document.getElementById('petals');
   const emojis = ['🌸', '🌹', '💖', '✨', '💐'];
   setInterval(() => {
@@ -76,4 +99,22 @@ function spawnPetals() {
   }, 1200);
 }
 
-document.addEventListener('DOMContentLoaded', spawnPetals);
+document.addEventListener('DOMContentLoaded', () => {
+  const container   = document.getElementById('petals');
+  const petalEmojis = ['🌸', '🌹', '🌺', '💐', '✿', '❀'];
+  function spawnPetal() {
+    const p = document.createElement('div');
+    p.className   = 'petal';
+    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    p.style.left  = Math.random() * 100 + 'vw';
+    const dur = 6 + Math.random() * 8;
+    p.style.animationDuration = dur + 's';
+    p.style.animationDelay   = Math.random() * 5 + 's';
+    p.style.fontSize = (.7 + Math.random() * .8) + 'rem';
+    p.style.opacity  = .4 + Math.random() * .4;
+    container.appendChild(p);
+    setTimeout(() => p.remove(), (dur + 5) * 1000);
+  }
+  setInterval(spawnPetal, 1200);
+  for (let i = 0; i < 4; i++) spawnPetal();
+});

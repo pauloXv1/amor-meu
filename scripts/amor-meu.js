@@ -40,17 +40,28 @@ function onPlayerReady() {
   document.getElementById('musicTitle').textContent  = musicName;
   document.getElementById('musicArtist').textContent = '♪ ' + musicArtist;
 
+  // Se veio da carta e estava tocando, retoma automaticamente
+  if (sessionStorage.getItem('musicPlaying') === 'true') {
+    ytPlayer.playVideo();
+    playIcon.style.display  = 'none';
+    pauseIcon.style.display = 'block';
+    bars.classList.remove('paused');
+    playing = true;
+  }
+
   playBtn.addEventListener('click', () => {
     if (playing) {
       ytPlayer.pauseVideo();
       playIcon.style.display  = 'block';
       pauseIcon.style.display = 'none';
       bars.classList.add('paused');
+      sessionStorage.setItem('musicPlaying', 'false');
     } else {
       ytPlayer.playVideo();
       playIcon.style.display  = 'none';
       pauseIcon.style.display = 'block';
       bars.classList.remove('paused');
+      sessionStorage.setItem('musicPlaying', 'true');
     }
     playing = !playing;
   });
@@ -83,22 +94,6 @@ function initScrollReveal() {
   cards.forEach(c => obs.observe(c));
 }
 
-function initCursor() {
-  const cursor = document.getElementById('cursor');
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top  = e.clientY + 'px';
-  });
-  document.addEventListener('mousedown', () => {
-    cursor.style.width  = '22px';
-    cursor.style.height = '22px';
-  });
-  document.addEventListener('mouseup', () => {
-    cursor.style.width  = '16px';
-    cursor.style.height = '16px';
-  });
-}
-
 function initPetals() {
   const container   = document.getElementById('petals');
   const petalEmojis = ['🌸', '🌹', '🌺', '💐', '✿', '❀'];
@@ -124,6 +119,5 @@ function initPetals() {
 document.addEventListener('DOMContentLoaded', () => {
   renderGallery();
   initScrollReveal();
-  initCursor();
   initPetals();
 });
